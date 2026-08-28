@@ -1,7 +1,6 @@
-# Regras de negócio de referência — scripts antigos do Gabriel (LZ.CNPJ, ~2021-2025)
+# Regras de negócio de referência
 
-Pontos bons extraídos dos scripts usados há 5 anos, para reaproveitar na construção
-das camadas STAGING e MARTS. Fonte: scripts enviados pelo Gabriel em 27/08/2026.
+Convenções aplicadas nas camadas STAGING e MARTS ao tratar os arquivos da Receita Federal.
 
 ## Chave
 

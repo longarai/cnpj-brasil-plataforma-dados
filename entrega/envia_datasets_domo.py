@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Envia os datasets do painel (views VW_DOMO_*) do Snowflake para o Domo.
 
-Na primeira execucao cria cada dataset no Domo (webform + stream); nas seguintes
-apenas substitui os dados. Os IDs criados ficam guardados em datasets_domo.json.
+Na primeira execucao cria cada dataset; nas seguintes substitui os dados.
+Os IDs ficam em datasets_domo.json.
 
-Credenciais ficam em config.py (copie de config.exemplo.py). Uso: python envia_datasets_domo.py
+Credenciais em config.py (copie de config.exemplo.py). Uso: python envia_datasets_domo.py
 """
 import csv
 import io

@@ -5,8 +5,6 @@ echo ================================================
 echo   CARGA MENSAL RECEITA FEDERAL - SNOWFLAKE
 echo ================================================
 echo.
-echo A parte de envio pode levar horas. Nao feche esta janela.
-echo.
 python "%~dp0carga_mensal.py"
 echo.
 if errorlevel 1 (

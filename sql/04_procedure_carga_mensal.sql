@@ -1,8 +1,7 @@
 -- Executar como SYSADMIN
--- Carga mensal completa: para cada conjunto, TRUNCATE + COPY.
--- Os arquivos PERMANECEM no stage apos a carga (decisao 27/08/2026); quem limpa o stage
--- e o inicio da carga do mes seguinte (carga_mensal.py faz REMOVE antes do envio).
--- Se um conjunto nao tiver arquivo no stage, a tabela dele nao e truncada (so avisa no resumo).
+-- Para cada conjunto de arquivos: TRUNCATE + COPY.
+-- Os arquivos permanecem no stage apos a carga; quem os remove e o inicio da carga seguinte.
+-- Conjunto sem arquivo no stage nao trunca a tabela: mantem a carga anterior e avisa no resumo.
 
 CREATE OR REPLACE PROCEDURE RAW.RECEITA_FEDERAL.SP_CARGA_MENSAL(DATA_REFERENCIA DATE)
 RETURNS VARCHAR

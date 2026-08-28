@@ -26,23 +26,22 @@ Com 50 origens no futuro, continuam existindo só 3 bancos — cada origem nova 
 - **Padrão único de ingestão, sempre em 3 fases**: (1) limpa o stage interno (remove os
   arquivos do mês anterior); (2) TODOS os arquivos do mês novo sobem para o stage;
   (3) a procedure carrega tudo do stage para as tabelas. **Os arquivos permanecem no
-  stage até a próxima carga mensal** (decisão 27/08/2026) — servem de cópia do mês
-  vigente e permitem recarregar qualquer tabela sem novo upload
-  (`CALL SP_CARGA_MENSAL(...)` direto no Snowsight)
+  stage até a próxima carga mensal** — servem de cópia do mês vigente e permitem
+  recarregar qualquer tabela sem novo upload (`CALL SP_CARGA_MENSAL(...)` no Snowsight)
 - 10 tabelas RAW: CNPJ (arquivo "Estabelecimentos" — menor grão, CNPJ completo de
   14 dígitos), EMPRESAS, SOCIOS, SIMPLES + 6 domínios
 - Padrão de nomes: termo único `RECEITA_FEDERAL` (nunca abreviar para "RF"); objetos não
   repetem o nome do schema (`RAW.RECEITA_FEDERAL.STG_ARQUIVOS`, `...FF_CSV`)
 - Detalhes operacionais: `carga_mensal_passo_a_passo.md`
 
-## STAGING.RECEITA_FEDERAL (a construir)
+## STAGING.RECEITA_FEDERAL
 
 Dynamic Tables 1:1 com a origem, aplicando as regras de `regras_negocio_referencia.md`:
 tipagem de datas e valores, CNPJ completo de 14 dígitos, decodificações (por JOIN nos
 domínios quando existir arquivo; por CASE fixo quando não existir), TIPO_EMAIL,
 TIPO_TELEFONE, NOME_EMPRESA.
 
-## MARTS — modelagem para o painel (estudo 27/08/2026)
+## MARTS — modelagem para o painel
 
 ### Modelo: estrela (star schema) dentro do MARTS
 
@@ -57,7 +56,7 @@ TIPO_TELEFONE, NOME_EMPRESA.
 
 ### O que o Domo lê: views achatadas e agregados, não a estrela crua
 
-O nosso Domo recebe dados por **push da API** (dataset webform + stream, método já validado).
+O Domo recebe dados por **push da API** (dataset webform + stream).
 Práticas do próprio Domo ([Data Processing Best Practices](https://domohelp.domo.com/hc/en-us/articles/360042935434-Data-Processing-and-Tools-Best-Practices)):
 cada card trabalha sobre UM dataset; juntar datasets dentro do Domo (Magic ETL/DataFusion)
 custa manutenção e execução lá. Padrão de mercado: **estrela no warehouse, dataset achatado
@@ -84,7 +83,7 @@ depois), cada uma com um passo lógico. Views ficam para transformações leves 
 
 ## Fluxo mensal completo
 
-1. Baixar arquivos novos em `C:\RF` e rodar `carga_mensal.py`
+1. Baixar os arquivos novos na pasta local e rodar `carga_mensal.py`
 2. RAW recarregado → STAGING e MARTS (Dynamic Tables) se atualizam sozinhas
-3. Script de push (a construir) envia os datasets das `VW_DOMO_*` para o Domo via Stream API
+3. `envia_datasets_domo.py` envia os datasets das `VW_DOMO_*` via Stream API
 4. Painel no Domo reflete o mês novo

@@ -1,8 +1,8 @@
--- Executar como ACCOUNTADMIN (dona das Dynamic Tables — decisao 27/08/2026:
--- sem GRANT de warehouse a SYSADMIN; a atualizacao automatica roda com a role dona)
--- STAGING: Dynamic Tables tipadas e decodificadas, 1:1 com o RAW.
+-- Executar como ACCOUNTADMIN: a role dona da Dynamic Table precisa enxergar o
+-- warehouse para a atualizacao automatica funcionar.
+-- Dynamic Tables tipadas e decodificadas, 1:1 com o RAW.
 -- TARGET_LAG DOWNSTREAM = atualiza quando o MARTS pedir; dominios sem consumidor
--- no MARTS usam lag proprio de 1 hora (custo zero enquanto o RAW nao muda).
+-- no MARTS usam lag proprio de 1 hora.
 
 CREATE OR REPLACE DYNAMIC TABLE STAGING.RECEITA_FEDERAL.CNAE
   TARGET_LAG = DOWNSTREAM WAREHOUSE = COMPUTE_WH
