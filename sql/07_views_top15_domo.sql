@@ -1,0 +1,32 @@
+-- Executar como ACCOUNTADMIN
+-- Views TOP 15 para os cards de ranking do Domo. O numero de ordem no rotulo
+-- ("01 · ...") faz a ordem alfabetica do grafico coincidir com o ranking,
+-- dispensando ordenacao/limite na interface do Domo.
+
+CREATE OR REPLACE VIEW MARTS.EMPRESAS.VW_DOMO_TOP15_MUNICIPIO AS
+WITH totais AS (
+  SELECT MUNICIPIO, UF, SUM(QT_CNPJ) AS QT_CNPJ
+  FROM MARTS.EMPRESAS.AGG_EMPRESAS_MUNICIPIO
+  GROUP BY MUNICIPIO, UF
+)
+SELECT
+  LPAD(ROW_NUMBER() OVER (ORDER BY QT_CNPJ DESC), 2, '0')
+    || ' · ' || MUNICIPIO || ' (' || UF || ')' AS MUNICIPIO,
+  QT_CNPJ
+FROM totais
+ORDER BY QT_CNPJ DESC
+LIMIT 15;
+
+CREATE OR REPLACE VIEW MARTS.EMPRESAS.VW_DOMO_TOP15_CNAE AS
+WITH totais AS (
+  SELECT CNAE, SUM(QT_CNPJ) AS QT_CNPJ
+  FROM MARTS.EMPRESAS.AGG_EMPRESAS_CNAE
+  GROUP BY CNAE
+)
+SELECT
+  LPAD(ROW_NUMBER() OVER (ORDER BY QT_CNPJ DESC), 2, '0')
+    || ' · ' || LEFT(CNAE, 60) AS CNAE,
+  QT_CNPJ
+FROM totais
+ORDER BY QT_CNPJ DESC
+LIMIT 15;

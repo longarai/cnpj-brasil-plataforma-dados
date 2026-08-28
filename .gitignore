@@ -1,0 +1,21 @@
+# credenciais — NUNCA versionar
+config.py
+*.env
+.env
+
+# IDs gerados pelo push do Domo (contem streamId/datasetId da sua instancia)
+entrega/datasets_domo.json
+
+# artefatos locais
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# dados brutos da Receita Federal (baixados localmente, ~28 GB)
+*.csv
+*.zip
+/RF/
+
+# material de divulgacao (uso pessoal, fora do repositorio)
+post_linkedin.md
