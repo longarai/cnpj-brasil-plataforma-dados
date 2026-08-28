@@ -102,6 +102,10 @@ flowchart LR
 
 **[docs/o_pipeline_por_dentro.md](docs/o_pipeline_por_dentro.md)** percorre o caminho do dado com **telas reais do ambiente**: os arquivos brutos chegando ao stage, a Dynamic Table que faz a limpeza, o grafo que se atualiza sozinho, a linhagem completa gerada pelo próprio Snowflake e a consulta final respondendo em 378 milissegundos.
 
+### ✅ E os números, dá para confiar?
+
+**[docs/qualidade_dos_dados.md](docs/qualidade_dos_dados.md)** mostra a conferência: todo indicador publicado foi **recalculado na fonte e comparado** com o que está no portal (12 de 12 conferem, sem divergência), além das armadilhas reais do cadastro público — como o capital social ser declarado por empresa e se repetir em cada filial, ou os R$ 464 bilhões de uma costureira do Amazonas.
+
 ---
 
 ## 🔄 A carga mensal — 2 cliques
@@ -173,6 +177,7 @@ O resultado sai em dois formatos, cada um para um público:
 │   └── index.html            # o portal de storytelling (offline, arquivo único)
 ├── docs/
 │   ├── o_pipeline_por_dentro.md        # o caminho do dado, com telas reais do Snowflake
+│   ├── qualidade_dos_dados.md          # conferência dos números e armadilhas do cadastro
 │   ├── arquitetura.md
 │   ├── carga_mensal_passo_a_passo.md
 │   └── regras_negocio_referencia.md

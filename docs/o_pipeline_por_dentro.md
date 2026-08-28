@@ -13,9 +13,14 @@ banco, com SQL**.
 
 ![Stage interno do Snowflake com os 37 arquivos compactados da Receita Federal](../imagens/snowflake/01-stage-arquivos-brutos.png)
 
-O **stage** é a área de pouso do Snowflake: um espaço de arquivos dentro do próprio banco.
-O script de carga envia para lá os arquivos do mês (`PUT`) e eles ficam guardados até a
-carga seguinte, servindo de cópia do que foi processado.
+O **stage** (em inglês, "palco"/"área de espera") é a área de pouso do Snowflake: um espaço
+de **arquivos** dentro do próprio banco, antes de virarem tabela. O script de carga envia
+para lá os arquivos do mês (`PUT`) e eles ficam guardados até a carga seguinte, servindo de
+cópia do que foi processado.
+
+> 💡 Não confundir com a camada **STAGING** do projeto: o *stage* guarda arquivos; o banco
+> `STAGING` guarda tabelas já tratadas. São coisas diferentes com nomes parecidos — o `stage`
+> é um recurso do Snowflake, o `STAGING` é uma escolha de arquitetura deste projeto.
 
 O que a tela mostra:
 
@@ -75,11 +80,22 @@ RAW.RECEITA_FEDERAL.CNPJ  →  STAGING.RECEITA_FEDERAL.CNPJ  →  INT_CNAES_POR_
 Quando a carga mensal atualiza o RAW, **a onda percorre a corrente inteira sozinha**. Cada
 caixa verde é uma atualização que terminou com sucesso (`Succeeded`).
 
-No painel da direita, as métricas do `FATO_CNPJ`:
+No painel da direita estão as métricas do `FATO_CNPJ`. Atenção: elas descrevem **a tabela**,
+não as empresas que estão dentro dela.
 
-- **Current Lag: 10m 10s** — o atraso real em relação à origem naquele momento
-- **Target Lag: 1h (downstream)** — o compromisso de frescor declarado
-- **Rows: 72,3M** e **State: Active**
+| Campo | O que significa |
+|---|---|
+| **Current Lag: 10m 10s** | há quanto tempo esta tabela está "atrás" da origem, neste momento |
+| **Target Lag: 1h (downstream)** | o atraso máximo aceito — o compromisso declarado no `CREATE` |
+| **Max Lag: 53m 25s** | o pior atraso já registrado (ficou dentro do 1h combinado) |
+| **Rows: 72,3M** | quantas linhas a tabela tem — uma por CNPJ |
+| **State: Active** | a tabela está **ligada e se atualizando**. O contrário seria `Suspended`, quando as atualizações automáticas estão pausadas |
+| **Refresh Mode: Full** | esta tabela recalcula tudo a cada atualização; a `STAGING.CNPJ`, por exemplo, é `Incremental` |
+
+> ⚠️ **Não confundir:** `State: Active` é o estado da **Dynamic Table** no Snowflake — nada a
+> ver com a *situação cadastral* das empresas. Uma empresa "ATIVA" é um dado dentro da tabela;
+> uma tabela "Active" é um objeto que continua se atualizando. São dois conceitos diferentes
+> que por acaso usam a mesma palavra.
 
 Nenhum Airflow, nenhum cron, nenhuma DAG. O compromisso é declarado; o banco cumpre.
 
