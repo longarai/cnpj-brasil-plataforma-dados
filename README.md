@@ -122,7 +122,10 @@ O resultado sai em dois formatos, cada um para um público:
 
 </div>
 
-**2. Portal web de storytelling** — uma página **100% offline** (arquivo único, sem depender de nada) que conta a história dos números em 7 capítulos, com gráficos próprios em SVG. É o `portal/index.html` deste repositório.
+**2. Portal web de storytelling** — uma página **100% offline** (arquivo único, sem depender de nada) que conta a história dos números em 7 capítulos, com gráficos próprios em SVG. É o `portal/index.html` deste repositório. Dois detalhes que valem a visita:
+
+- **Botão `</> SQL` em cada gráfico** — abre a consulta exata que gerou aquele número, com opção de copiar. Nada de "confie em mim": o caminho do dado está à vista.
+- **Mapa de calor com drill** — clique num estado para abrir as maiores cidades, e numa cidade para ver uma amostra de empresas reais (CNPJ, CNAE, CEP e capital social).
 
 <div align="center">
 
