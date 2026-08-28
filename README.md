@@ -84,7 +84,7 @@ flowchart LR
 |---|---|---|
 | **RAW** | Dados **brutos**, idênticos ao arquivo original | Tabelas de texto puro + uma *procedure* que recarrega tudo todo mês |
 | **STAGING** | Dados **tratados**: datas viram datas, códigos viram nomes | *Dynamic Tables* — **tabelas que se atualizam sozinhas** quando o RAW muda |
-| **MARTS** | Dados **prontos para o painel**, em [modelo estrela](https://pt.wikipedia.org/wiki/Esquema_em_estrela) | Um fato central (`FATO_CNPJ`, 1 linha por CNPJ) + dimensões (CNAE, município, etc.) |
+| **MARTS** | Dados **prontos para o painel**, em [modelo estrela](https://pt.wikipedia.org/wiki/Esquema_estrela) | Um fato central (`FATO_CNPJ`, 1 linha por CNPJ) + dimensões (CNAE, município, etc.) |
 
 **A regra de ouro:** a *origem* organiza a entrada (RAW e STAGING), o *negócio* organiza a saída (MARTS). Amanhã, com 50 fontes de dados diferentes, continuam existindo só **3 bancos** — cada fonte nova é só um schema novo.
 
@@ -113,7 +113,7 @@ flowchart LR
 O trabalho recorrente é o mais simples possível: baixar os arquivos do mês e dar **dois cliques** em um `.bat`.
 
 ```text
-1. Baixar os .zip do mês em uma pasta local  (arquivos.receitafederal.gov.br)
+1. Baixar os .zip do mês em uma pasta local  (dados públicos da Receita Federal)
 2. Dois cliques em  ingestao/carga_mensal.bat
        ├─ limpa os arquivos do mês anterior
        ├─ envia os novos para o Snowflake (compactado, em paralelo)
@@ -148,6 +148,16 @@ O resultado sai em dois formatos, cada um para um público:
 ![Portal — capa](imagens/01-capa-hero.png)
 
 ![Portal — situação cadastral](imagens/02-situacao.png)
+
+</div>
+
+<div align="center">
+
+![Sobrevivência das empresas por década de abertura](imagens/03-sobrevivencia.png)
+
+![As atividades mais comuns entre as empresas ativas](imagens/06-atividade.png)
+
+![Relatório analítico: do panorama ao CNPJ individual](imagens/07-detalhe.png)
 
 </div>
 
@@ -226,7 +236,7 @@ python ingestao/carga_mensal.py
 ## 📚 Fonte dos dados
 
 Dados abertos do CNPJ, publicados mensalmente pela Receita Federal:
-**[arquivos.receitafederal.gov.br/dados/cnpj/dados_abertos_cnpj](https://arquivos.receitafederal.gov.br/dados/cnpj/dados_abertos_cnpj/)**
+**[gov.br/receitafederal (dados públicos CNPJ)](https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/cadastros/consultas/dados-publicos-cnpj)**
 
 Dados de domínio público. Código sob licença [MIT](LICENSE).
 

@@ -5,8 +5,9 @@ recente importa: a carga limpa (TRUNCATE) e recarrega as tabelas do zero.
 
 ## 1. Baixar os arquivos do mês
 
-- Acessar https://arquivos.receitafederal.gov.br/dados/cnpj/dados_abertos_cnpj/
-- Entrar na pasta do mês mais recente (ex.: `2026-08/`)
+- Abrir a página oficial dos dados públicos do CNPJ e seguir o link do repositório
+  de arquivos: [gov.br/receitafederal — dados públicos CNPJ](https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/cadastros/consultas/dados-publicos-cnpj)
+- Entrar na pasta da competência mais recente (ex.: `2026-08/`)
 - Baixar todos os zips: Empresas (10), Estabelecimentos (10), Socios (10), Simples,
   Cnaes, Motivos, Municipios, Naturezas, Paises, Qualificacoes
 - **Apagar os arquivos do mês anterior** da pasta configurada em `PASTA_ARQUIVOS`
