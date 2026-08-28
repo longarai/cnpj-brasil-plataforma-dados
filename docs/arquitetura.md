@@ -1,7 +1,12 @@
 # Arquitetura de Dados — Snowflake → Domo
 
-Conta Snowflake: `<sua conta Snowflake>` | usuário `ENGENHARIA` | warehouse único `COMPUTE_WH`
-(decisão: não criar warehouse novo para não gerar custo). Objetos criados com role `SYSADMIN`.
+> 📸 Este documento descreve o desenho. Para vê-lo funcionando no ambiente real — stage,
+> Dynamic Tables, grafo de atualização, linhagem e consulta final — veja
+> **[o_pipeline_por_dentro.md](o_pipeline_por_dentro.md)**.
+
+Warehouse único `COMPUTE_WH` (decisão: não criar warehouse novo para não gerar custo).
+Objetos da ingestão criados com role `SYSADMIN`; Dynamic Tables com `ACCOUNTADMIN`
+(a role dona precisa enxergar o warehouse para o refresh automático).
 
 ## Camadas (medalhão, nomenclatura Snowflake/dbt)
 

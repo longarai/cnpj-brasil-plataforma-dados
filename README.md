@@ -90,6 +90,18 @@ flowchart LR
 
 > 💡 **Por que "Dynamic Table"?** É uma tabela normal, mas com uma instrução do tipo *"fique sempre igual a esta consulta"*. Quando os dados de baixo mudam, ela se recalcula sozinha — **sem Airflow, sem cron, sem script de orquestração**. Você escreve o SELECT; o Snowflake cuida do resto. É por isso que o **T** do ELT, aqui, é só SQL.
 
+<div align="center">
+
+![Grafo de atualização das Dynamic Tables, do dado bruto aos agregados do painel](imagens/snowflake/03-grafo-atualizacao-dynamic-tables.png)
+
+<sub>A corrente de atualização: quando a carga mensal toca o RAW, a onda percorre até os agregados sozinha.</sub>
+
+</div>
+
+### 📸 Quer ver por dentro?
+
+**[docs/o_pipeline_por_dentro.md](docs/o_pipeline_por_dentro.md)** percorre o caminho do dado com **telas reais do ambiente**: os arquivos brutos chegando ao stage, a Dynamic Table que faz a limpeza, o grafo que se atualiza sozinho, a linhagem completa gerada pelo próprio Snowflake e a consulta final respondendo em 378 milissegundos.
+
 ---
 
 ## 🔄 A carga mensal — 2 cliques
@@ -160,6 +172,7 @@ O resultado sai em dois formatos, cada um para um público:
 ├── portal/
 │   └── index.html            # o portal de storytelling (offline, arquivo único)
 ├── docs/
+│   ├── o_pipeline_por_dentro.md        # o caminho do dado, com telas reais do Snowflake
 │   ├── arquitetura.md
 │   ├── carga_mensal_passo_a_passo.md
 │   └── regras_negocio_referencia.md
