@@ -41,10 +41,14 @@ Alguns números que saíram da base (referência de julho/2026):
 ### 🔍 E as análises que incomodam
 
 - 📉 **A pejotização em um gráfico:** as aberturas cresceram **6× em 20 anos**, mas as empresas com **2+ sócios** (sociedade de verdade) ficaram **paradas em ~900 mil por mandato presidencial**. A fatia delas caiu de **1 em cada 3** (2003–2006) para **1 em cada 19** (hoje). O "boom de empreendedorismo" é, na real, um boom de CNPJ de uma pessoa só.
-- ⏳ **Ter idade não protege:** das **23,4 milhões** de empresas com mais de 10 anos em 2022, só **18% seguem ativas**.
+- ⏳ **Metade das empresas que fecham não passa de 3 anos e 4 meses** — e **28,8% não completam o primeiro ano**.
+- 🏙️ **Metade do país empresarial cabe em 100 cidades**, de um total de 5.572 municípios.
 - 🔁 **Rotatividade brutal:** as baixas por ano cresceram **15×** — de 194 mil (2006) para 2,9 milhões (2024).
+- 📅 **Agosto é o mês em que mais se abre empresa** no Brasil; dezembro é o vale, com quase metade do movimento.
 
 <div align="center">
+
+![Quanto tempo dura uma empresa no Brasil](imagens/03b-tempo-de-vida.png)
 
 ![A pejotização em números: sociedade real x CNPJ individual por mandato](imagens/04b-pejotizacao.png)
 
@@ -138,10 +142,11 @@ O resultado sai em dois formatos, cada um para um público:
 
 </div>
 
-**2. Portal web de storytelling** — uma página **100% offline** (arquivo único, sem depender de nada) que conta a história dos números em 7 capítulos, com gráficos próprios em SVG. É o `portal/index.html` deste repositório. Dois detalhes que valem a visita:
+**2. Portal web de storytelling** — uma página **100% offline** (arquivo único, sem depender de nada) que conta a história dos números em 8 capítulos, com gráficos próprios em SVG. É o `portal/index.html` deste repositório. Três detalhes que valem a visita:
 
 - **Botão `</> SQL` em cada gráfico** — abre a consulta exata que gerou aquele número, com opção de copiar. Nada de "confie em mim": o caminho do dado está à vista.
-- **Mapa de calor com drill** — clique num estado para abrir as maiores cidades, e numa cidade para ver uma amostra de empresas reais (CNPJ, CNAE, CEP e capital social).
+- **Mapa de calor com drill** — o contorno real do Brasil; clique num estado para abrir as maiores cidades como bolhas, e numa cidade para ver empresas reais (CNPJ, CNAE, CEP e capital social).
+- **Navegação por capítulos** — índice lateral que acompanha a leitura, com barra de progresso.
 
 <div align="center">
 
