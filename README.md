@@ -46,10 +46,17 @@ Alguns números que saíram da base (referência de julho/2026):
 - 🧾 **Tire o MEI da conta e o Brasil encolhe de 33 para 12 milhões de empresas** em atividade — o gráfico final do portal deixa alternar entre as duas visões.
 - 🔁 **Rotatividade brutal:** as baixas por ano cresceram **15×** — de 194 mil (2006) para 2,9 milhões (2024).
 - 📅 **Agosto é o mês em que mais se abre empresa** no Brasil; dezembro é o vale, com quase metade do movimento.
+- 🏭 **A indústria de transformação é só 7,5% das empresas ativas** — o comércio, sozinho, é 24,7%. Um retrato de economia de balcão e serviços.
+- 🗺️ **Santa Catarina supera São Paulo em densidade empresarial** (186 contra 185 empresas por mil habitantes); o Maranhão tem 53.
+- 🎲 **Onde é mais difícil durar:** dos setores, "outros serviços" tem a pior sobrevivência em 5 anos (51%); atividades imobiliárias, a melhor (85%).
 
 <div align="center">
 
 ![Quanto tempo dura uma empresa no Brasil](imagens/03b-tempo-de-vida.png)
+
+![Estrutura setorial: comércio lidera, indústria é 7,5%](imagens/05b-setores.png)
+
+![Sobrevivência por setor e projeção de cenários](imagens/06c-cenarios.png)
 
 ![A pejotização em números: sociedade real x CNPJ individual por mandato](imagens/04b-pejotizacao.png)
 
@@ -143,11 +150,13 @@ O resultado sai em dois formatos, cada um para um público:
 
 </div>
 
-**2. Portal web de storytelling** — uma página **100% offline** (arquivo único, sem depender de nada) que conta a história dos números em 9 capítulos, com gráficos próprios em SVG. É o `portal/index.html` deste repositório. O que vale a visita:
+**2. Portal web de storytelling** — uma página **100% offline** (arquivo único, sem depender de nada) que conta a história dos números em 11 capítulos e 21 gráficos próprios em SVG. É o `portal/index.html` deste repositório. O que vale a visita:
 
 - **Botão `</> SQL` em cada gráfico** — abre a consulta exata que gerou aquele número, com opção de copiar. Nada de "confie em mim": o caminho do dado está à vista.
 - **Mapa de calor com drill** — o contorno real do Brasil; clique num estado para abrir as maiores cidades como bolhas, e numa cidade para ver empresas reais (CNPJ, CNAE, CEP e capital social).
 - **Série de estoque com filtro** — o acumulado de empresas em atividade ano a ano, alternando entre incluir ou não o MEI; cada ano mostra aberturas, fechamentos e saldo.
+- **Mapa em duas medidas** — o mesmo mapa alterna entre volume absoluto e empresas por mil habitantes, o que muda completamente a leitura do país.
+- **Sobrevivência por segmento e cenários** — taxa de sobrevivência em 5 anos por setor, porte e UF, mais uma projeção do estoque até 2030 em três ritmos.
 - **Navegação por capítulos** — índice lateral que acompanha a leitura, com barra de progresso.
 
 <div align="center">
